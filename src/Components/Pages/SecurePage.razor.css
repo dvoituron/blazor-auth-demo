@@ -1,0 +1,19 @@
+.claims-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+.claims-table th,
+.claims-table td {
+    padding: 0.5rem 0.75rem;
+    border-bottom: 1px solid #eaecef;
+    text-align: left;
+    font-family: "Consolas", "Courier New", monospace;
+    font-size: 0.9rem;
+    word-break: break-all;
+}
+
+.claims-table th {
+    background: #f6f8fa;
+}

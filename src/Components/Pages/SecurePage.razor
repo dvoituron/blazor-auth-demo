@@ -1,0 +1,34 @@
+@page "/secure"
+@attribute [Authorize]
+@using System.Security.Claims
+
+<PageTitle>Secure page</PageTitle>
+
+<h1>Secure page</h1>
+
+<p>This page requires authentication. You reached it because you are signed in.</p>
+
+<AuthorizeView>
+    <Authorized>
+        <h2>Hello, @context.User.Identity?.Name</h2>
+
+        <h3>Claims</h3>
+        <table class="claims-table">
+            <thead>
+                <tr>
+                    <th>Type</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var claim in context.User.Claims)
+                {
+                    <tr>
+                        <td>@claim.Type</td>
+                        <td>@claim.Value</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </Authorized>
+</AuthorizeView>

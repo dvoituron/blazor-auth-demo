@@ -1,0 +1,17 @@
+@* Displays the current user plus a logout button, or a link to the login page. *@
+<div class="login-display">
+    <AuthorizeView>
+        <Authorized>
+            <span class="login-display__user">
+                Signed in as <strong>@context.User.Identity?.Name</strong>
+            </span>
+            <form action="/logout" method="post" class="login-display__form">
+                <AntiforgeryToken />
+                <button type="submit" class="login-display__button">Sign out</button>
+            </form>
+        </Authorized>
+        <NotAuthorized>
+            <a class="login-display__link" href="/login">Sign in</a>
+        </NotAuthorized>
+    </AuthorizeView>
+</div>

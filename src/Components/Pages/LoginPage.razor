@@ -1,0 +1,39 @@
+@page "/login"
+@using Microsoft.AspNetCore.Components
+
+<PageTitle>Sign in</PageTitle>
+
+<div class="login-container">
+    <h1>Sign in</h1>
+    <p>Choose an identity provider to continue.</p>
+
+    <div class="login-buttons">
+        <a class="login-button login-button--github"
+           href="@GetLoginUrl("/login/github")">
+            <span class="login-button__icon" aria-hidden="true">@@</span>
+            <span>Sign in with GitHub</span>
+        </a>
+
+        <a class="login-button login-button--aad"
+           href="@GetLoginUrl("/login/aad")">
+            <span class="login-button__icon" aria-hidden="true">#</span>
+            <span>Sign in with Microsoft (Entra ID)</span>
+        </a>
+    </div>
+</div>
+
+@code {
+    [SupplyParameterFromQuery(Name = "returnUrl")]
+    public string? ReturnUrl { get; set; }
+
+    private string GetLoginUrl(string basePath)
+    {
+        if (string.IsNullOrWhiteSpace(ReturnUrl))
+        {
+            return basePath;
+        }
+
+        var encoded = Uri.EscapeDataString(ReturnUrl);
+        return $"{basePath}?returnUrl={encoded}";
+    }
+}

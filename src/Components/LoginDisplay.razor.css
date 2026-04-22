@@ -1,0 +1,27 @@
+.login-display {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.login-display__form {
+    margin: 0;
+}
+
+.login-display__button {
+    padding: 0.4rem 0.9rem;
+    border: 1px solid #d0d7de;
+    background: #ffffff;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.login-display__button:hover {
+    background: #f6f8fa;
+}
+
+.login-display__link {
+    color: #0969da;
+    text-decoration: none;
+    font-weight: 500;
+}
